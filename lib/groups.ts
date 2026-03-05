@@ -8,14 +8,14 @@ export const groups: Table[] = [
     name: "Mesa 1",
     people: [
       "Diego Agudelo",
-      "Isabel C. Blandon",
-      "Paula A. Blandon",
+      "Isabel Blandon",
+      "Paula Blandon",
       "Santiago Vasquez",
       "Valentina Quintana",
       "Salome Blandon",
       "Sofia Quintana",
-      "Miguel A. Blandon",
-      "Juan M. Patiño",
+      "Miguel Blandon",
+      "Juan Patiño",
       "Maria Jose"
     ]
   },
@@ -27,24 +27,24 @@ export const groups: Table[] = [
       "Jhon Roa",
       "Sandra Caicedo",
       "Andres Caicedo",
-      "Daniela",
-      "Cristian",
+      "Daniela Caicedo",
+      "Cristian reina",
       "Giraly",
       "David Marín",
-      "Esposa de David Marín"
+      "Kathe"
     ]
   },
   {
     name: "Mesa 3",
     people: [
       "Elvia Arenas",
-      "Maria F. Blandon",
-      "Luis J. Blandon",
+      "Maria Blandon",
+      "Luis Blandon",
       "Betty Quintero",
-      "Carlos A. Blandon",
+      "Carlos Blandon",
       "Vanesa Garcia",
-      "Wilton R. Ortiz",
-      "Libia P. Blandon",
+      "Wilton Ortiz",
+      "Libia Blandon",
       "Camilo Ortiz",
       "Eliana"
     ]
