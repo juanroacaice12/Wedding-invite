@@ -2,16 +2,52 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { groups } from "@/lib/groups";
 
 export default function Home() {
   const [name, setName] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
 
-  const handleSubmit = () => {
-    if (!name.trim()) return;
+  const isInvited = (inputName: string) => {
+    const normalized = inputName.trim().toLowerCase();
 
-    localStorage.setItem("guest", JSON.stringify({ name }));
-    router.push("/hero"); // 👈 ahora va al hero
+    return groups.some((table) =>
+      table.people.some((person) => {
+        const full = person.toLowerCase();
+        const firstName = full.split(" ")[0];
+
+        return (
+          normalized === full ||        // nombre completo
+          normalized === firstName      // solo primer nombre
+        );
+      })
+    );
+  };
+
+  const handleSubmit = () => {
+    const trimmed = name.trim();
+
+    if (!trimmed) {
+      setError("Por favor escribe tu nombre.");
+      return;
+    }
+
+    const invited = isInvited(trimmed);
+
+    if (!invited) {
+      setError("No encontramos tu invitación. Verifica tu nombre.");
+      return;
+    }
+
+    localStorage.setItem(
+      "guest",
+      JSON.stringify({
+        name: trimmed
+      })
+    );
+
+    router.push("/hero");
   };
 
   return (
@@ -29,13 +65,22 @@ export default function Home() {
         type="text"
         placeholder="Escribe tu nombre"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => {
+          setName(e.target.value);
+          setError("");
+        }}
         className="mt-8 w-full max-w-md px-6 py-4 
                    bg-transparent 
                    border-b border-neutral-400 
                    focus:outline-none 
                    text-center text-lg"
       />
+
+      {error && (
+        <p className="mt-4 text-red-500 text-sm">
+          {error}
+        </p>
+      )}
 
       <button
         onClick={handleSubmit}

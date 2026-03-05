@@ -41,33 +41,48 @@ export default function AgendaPage() {
   const agenda = [
     {
       time: "7:00 p.m.",
-      title: "Ceremonia",
-      details: "Parroquia Nuestra Señora de Chiquinquirá",
+      title: "Inicio de la ceremonia",
+      details: "Comienza la ceremonia religiosa",
     },
     {
       time: "8:00 p.m.",
-      title: "Recepción",
-      details: "Coctel de bienvenida",
+      title: "Inicio de la recepción",
+      details: "Recepción de invitados",
     },
     {
-      time: "8:30 p.m.",
-      title: "Entrada",
-      details: "Dinámica especial con recompensa",
+      time: "8:00 – 8:30 p.m.",
+      title: "Cóctel de bienvenida",
+      details: "Disfruta de bebidas y aperitivos",
     },
     {
-      time: "9:30 p.m.",
-      title: "Plato fuerte",
-      details: "Celebración y brindis",
+      time: "8:30 – 9:00 p.m.",
+      title: "Entradas",
+      details: "Inicio de la dinámica de entradas",
+    },
+    {
+      time: "9:00 – 9:15 p.m.",
+      title: "Palabras",
+      details: "Momento especial de mensajes",
+    },
+    {
+      time: "9:15 – 10:00 p.m.",
+      title: "Plato fuerte y bebida",
+      details: "Cena principal",
+    },
+    {
+      time: "10:00 – 11:30 p.m.",
+      title: "Banda en vivo",
+      details: "Música en vivo para celebrar",
     },
     {
       time: "11:00 p.m.",
       title: "Torta",
-      details: "Momento dulce",
+      details: "Momento dulce de la noche",
     },
     {
-      time: "Después",
-      title: "Celebración",
-      details: "Baile y muchas risas",
+      time: "11:30 p.m. – 1:00 a.m.",
+      title: "Celebración libre",
+      details: "Música, baile y fiesta",
     },
   ];
 

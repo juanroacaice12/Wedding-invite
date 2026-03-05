@@ -9,17 +9,20 @@ export async function POST(req: Request) {
 
     const name = formData.get("name") as string;
     const message = formData.get("message") as string;
-    const file = formData.get("file") as File | null;
 
-    let attachments = [];
+    const files = formData.getAll("files") as File[];
 
-    if (file && file.size > 0) {
-      const buffer = Buffer.from(await file.arrayBuffer());
+    const attachments = [];
 
-      attachments.push({
-        filename: file.name,
-        content: buffer,
-      });
+    for (const file of files) {
+      if (file && file.size > 0) {
+        const buffer = Buffer.from(await file.arrayBuffer());
+
+        attachments.push({
+          filename: file.name,
+          content: buffer,
+        });
+      }
     }
 
     await resend.emails.send({
@@ -35,11 +38,16 @@ export async function POST(req: Request) {
       attachments,
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json(
+      { success: true },
+      { status: 200 }
+    );
+
   } catch (error) {
     console.error("Error enviando correo:", error);
+
     return NextResponse.json(
-      { error: "Error enviando correo" },
+      { success: false, error: "Error enviando correo" },
       { status: 500 }
     );
   }
